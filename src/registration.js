@@ -1,22 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import axios from "./axios";
 
-export default function FriendButton() {
-    const [someValue, setSomeValue] = useState("");
+export default function Registration() {
+    const [registration, setRegistration] = useState("");
+    const [error, setError] = useState("");
 
-    const submitRegistration = () => {
+    const submitRegistration = (e) => {
+        e.preventDefault();
+
         axios
-            .post(`/registration`)
+            .post(`/registration`, registration)
             .then(function (registration) {
-                console.log(registration);
+                if (registration.data == "error") {
+                    return setError(
+                        "You already registered with this Email, please use another one."
+                    );
+                }
+                location.replace("/my-cooks");
             })
             .catch(function (error) {
                 console.log(error);
             });
     };
 
-    const handleChange = () => {};
+    const handleChange = (e) => {
+        setRegistration({ ...registration, [e.target.name]: e.target.value });
+    };
 
     return (
         <div>
@@ -63,6 +73,8 @@ export default function FriendButton() {
                         Log in
                     </Link>
                 </div>
+                <br></br>
+                <span className="error">{error}</span>
             </form>
         </div>
     );

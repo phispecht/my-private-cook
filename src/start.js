@@ -6,6 +6,8 @@ import App from "./app";
 let elem;
 if (location.pathname === "/") {
     elem = <Landing />;
+} else if (location.pathname === "/login") {
+    elem = <Landing />;
 } else {
     elem = <App />;
 }

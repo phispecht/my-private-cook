@@ -34,7 +34,8 @@ h1 {
     color: white;
 }
 
-.registrationForm {
+.registrationForm,
+.loginForm {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,26 +43,38 @@ h1 {
     color: white;
 }
 
-.registrationForm input {
+.registrationForm input,
+.loginForm input {
     display: block;
     border: none;
     border-radius: 5px;
     height: 30px;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.registrationForm input:not(:last-of-type) {
+.registertitle,
+.logintitle {
+    text-align: center;
+}
+
+.registrationForm input:not(:last-of-type),
+.loginForm input:not(:last-of-type) {
     width: 200px;
 }
 
-.registrationForm input:not(:first-of-type) {
+.registrationForm input:not(:first-of-type),
+.loginForm input:not(:first-of-type) {
     margin-top: 20px;
 }
 
-.registerButton {
+.registerButton,
+.loginButton {
     margin: 0 auto;
     width: 110px;
-    background-color: #e67332;
+    background-color: #c9662e;
     color: white;
+    cursor: pointer;
 }
 
 .loginRegistration {
@@ -72,4 +85,10 @@ h1 {
 
 a.loginLink {
     color: white;
+}
+
+.error {
+    margin-top: 20px;
+    color: red;
+    text-align: center;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import Registration from "./registration";
-/* import Login from "./login"; */
+import Login from "./login";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 export default function Landing() {
@@ -11,8 +11,8 @@ export default function Landing() {
             </div>
             <div className="landing-top-right landing-child">
                 <BrowserRouter>
-                    <Route path="/" render={() => <Registration />} />
-                    {/* <Link to="/Login" render={() => <Login />} /> */}
+                    <Route exact path="/" render={() => <Registration />} />
+                    <Route path="/login" render={() => <Login />} />
                 </BrowserRouter>
             </div>
         </div>
