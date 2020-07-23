@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import Landing from "./landing";
+import App from "./app";
 
-ReactDOM.render(
-    <HelloWorld />,
-    document.querySelector('main')
-);
-
-function HelloWorld() {
-    return (
-        <div>Hello, World!</div>
-    );
+let elem;
+if (location.pathname === "/") {
+    elem = <Landing />;
+} else {
+    elem = <App />;
 }
+
+ReactDOM.render(elem, document.querySelector("main"));
