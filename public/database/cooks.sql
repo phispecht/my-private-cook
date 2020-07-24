@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS cooks CASCADE;
+ 
+CREATE TABLE cooks(
+      id SERIAL PRIMARY KEY,
+      national_cuisine VARCHAR(255) NOT NULL CHECK (national_cuisine != ''),
+      specialties VARCHAR(255) NOT NULL CHECK (specialties != ''),
+      experiences VARCHAR(255),
+      cook_on_site BOOLEAN DEFAULT false,
+      shopping_food BOOLEAN DEFAULT false,
+      delivery BOOLEAN DEFAULT false,
+      hourly_wage VARCHAR(255) NOT NULL CHECK (hourly_wage != ''),
+      rating VARCHAR(255),
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );

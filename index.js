@@ -90,6 +90,67 @@ app.post("/login", (req, res) => {
         });
 });
 
+app.get("/profile", (req, res) => {
+    const id = req.session.userId;
+
+    db.selectProfile(id)
+        .then((userData) => {
+            res.json(userData);
+        })
+        .catch(function (error) {
+            res.json("no_profile");
+            console.log(error);
+        });
+});
+
+app.post("/submitCook", (req, res) => {
+    const national_cuisine = req.body.national_cuisine;
+    const hourly_wage = req.body.hourly_wage;
+    const specialties = req.body.specialties;
+    const experiences = req.body.experiences;
+    let cook_on_site = req.body.cook_on_site;
+    let shopping_food = req.body.shopping_food;
+    let delivery = req.body.delivery;
+
+    if (req.body.cook_on_site == undefined) {
+        cook_on_site = "Yes";
+    }
+    if (req.body.shopping_food == undefined) {
+        shopping_food = "Yes";
+    }
+    if (req.body.delivery == undefined) {
+        delivery = "Yes";
+    }
+
+    db.insertCook(
+        national_cuisine,
+        hourly_wage,
+        specialties,
+        experiences,
+        cook_on_site,
+        shopping_food,
+        delivery
+    )
+        .then((cookData) => {
+            res.json(cookData);
+        })
+        .catch(function (error) {
+            res.json("error");
+            console.log(error);
+        });
+});
+
+app.get("/cooks", (req, res) => {
+    db.selectCooks()
+        .then((cooksData) => {
+            res.json(cooksData);
+        })
+        .catch(function (error) {
+            res.json("error");
+            console.log(error);
+        });
+});
+
 app.get("*", function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });

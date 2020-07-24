@@ -18,3 +18,34 @@ exports.insertRegistration = (first, last, email, pw) => {
 exports.checkLogin = (email) => {
     return db.query(`SELECT * FROM users WHERE email = $1`, [email]);
 };
+
+exports.selectProfile = (Id) => {
+    return db.query(`SELECT * FROM users WHERE id = $1`, [Id]);
+};
+
+exports.insertCook = (
+    national_cuisine,
+    hourly_wage,
+    specialties,
+    experiences,
+    cook_on_site,
+    shopping_food,
+    delivery
+) => {
+    return db.query(
+        `INSERT INTO cooks (national_cuisine, hourly_wage, specialties, experiences, cook_on_site, shopping_food, delivery) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+        [
+            national_cuisine,
+            hourly_wage,
+            specialties,
+            experiences,
+            cook_on_site,
+            shopping_food,
+            delivery,
+        ]
+    );
+};
+
+exports.selectCooks = () => {
+    return db.query(`SELECT * FROM cooks`);
+};

@@ -3,6 +3,11 @@ body {
     margin: 0;
 }
 
+button:active,
+button:focus {
+    outline: none;
+}
+
 .landing-top-left {
     background-image: url("../images/landing-page-dish.jpg");
     width: 50%;
@@ -21,14 +26,18 @@ body {
     display: inline-block;
 }
 
+h2 {
+    font-size: 2.2rem;
+}
+
 h1 {
-    font-size: 36px;
+    font-size: 32px;
 }
 
 .h1-landing {
     font-size: 3rem;
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -44,13 +53,21 @@ h1 {
 }
 
 .registrationForm input,
-.loginForm input {
+.loginForm input,
+.modalForm input,
+.modalForm textarea,
+.modalForm select {
     display: block;
     border: none;
     border-radius: 5px;
-    height: 30px;
     text-align: center;
     margin: 0 auto;
+}
+
+.modalForm input:not(:last-of-type),
+.modalForm textarea,
+.modalForm select {
+    text-align: left;
 }
 
 .registertitle,
@@ -58,8 +75,27 @@ h1 {
     text-align: center;
 }
 
+.modaltitle {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.modalForm textarea,
+.modalForm select {
+    height: 30px;
+    width: 205px;
+}
+
+.modalForm textarea {
+    max-width: 202px;
+    min-width: 202px;
+    max-height: 100px;
+}
+
 .registrationForm input:not(:last-of-type),
-.loginForm input:not(:last-of-type) {
+.loginForm input:not(:last-of-type),
+.modalForm input:not(:last-of-type) {
+    height: 30px;
     width: 200px;
 }
 
@@ -68,13 +104,26 @@ h1 {
     margin-top: 20px;
 }
 
+.css-2b097c-container {
+    max-width: 205px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+}
+
+.css-g1d714-ValueContainer {
+    height: 30px;
+}
+
 .registerButton,
-.loginButton {
+.loginButton,
+.modalButton {
     margin: 0 auto;
     width: 110px;
     background-color: #c9662e;
     color: white;
     cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
 }
 
 .loginRegistration {
@@ -91,4 +140,97 @@ a.loginLink {
     margin-top: 20px;
     color: red;
     text-align: center;
+}
+
+.h1-cooks {
+    margin-top: 0;
+    padding: 10px;
+    color: white;
+    background-color: #51b73b;
+    position: fixed;
+}
+
+.app-container {
+    background-image: url("../images/my-cooks-header.jpg");
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.cook-link {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.landingButton {
+    font-size: 1.8rem;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.landing-text {
+    color: white;
+    font-size: 1.2rem;
+    width: 60%;
+    padding: 20px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(81, 183, 59, 0.7);
+}
+
+.my-cooks-container-child {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 70%;
+    height: 100vh;
+    min-height: 500px;
+    margin: 0 auto;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #51b73b;
+    color: white;
+    padding: 10px 10px 10px 15px;
+    font-size: 1.2rem;
+}
+
+.profile-login-link {
+    color: white;
+    width: 150px;
+}
+
+.fa-angle-double-left {
+    padding-right: 10px;
+    font-size: 20px;
+    color: rgb(0, 17, 255);
+}
+
+.showModalButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.label-container span {
+    border-top: 1px solid white;
+    font-size: 16px;
+}
+
+.modalForm input:last-of-type {
+    margin-top: 30px;
+}
+
+.modalForm {
+    padding-bottom: 20px;
 }
