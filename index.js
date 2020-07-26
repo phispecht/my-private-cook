@@ -112,6 +112,8 @@ app.post("/submitCook", (req, res) => {
     let shopping_food = req.body.shopping_food;
     let delivery = req.body.delivery;
 
+    const id = req.session.userId;
+
     if (req.body.cook_on_site == undefined) {
         cook_on_site = "Yes";
     }
@@ -129,7 +131,8 @@ app.post("/submitCook", (req, res) => {
         experiences,
         cook_on_site,
         shopping_food,
-        delivery
+        delivery,
+        id
     )
         .then((cookData) => {
             res.json(cookData);
@@ -147,6 +150,17 @@ app.get("/cooks", (req, res) => {
         })
         .catch(function (error) {
             res.json("error");
+            console.log(error);
+        });
+});
+
+app.get("/getCookModal/:id", (req, res) => {
+    const id = req.params.id;
+    db.getCookModal(id)
+        .then((cookModalData) => {
+            res.json(cookModalData);
+        })
+        .catch(function (error) {
             console.log(error);
         });
 });

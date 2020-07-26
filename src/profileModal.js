@@ -8,12 +8,15 @@ export default function ProfileModal() {
     const [greeting, setGreeting] = useState("");
     const [submitCook, setSubmitCook] = useState("");
     const [show, setShow] = useState(false);
+    const [arrow, setArrow] = useState(
+        <i className="fas fa-angle-double-left"> </i>
+    );
 
     useEffect(() => {
         (async () => {
             const profile = await axios.get(`/profile`);
-            console.log(profile);
             if (profile.data == "no_profile" || profile.data.rows.length == 0) {
+                setArrow("");
                 return setNo_profile("Register to interact");
             }
             setName(profile.data.rows[0].first);
@@ -39,13 +42,18 @@ export default function ProfileModal() {
     };
 
     const showModal = () => {
+        if (show == true) {
+            setArrow(<i className="fas fa-angle-double-left"> </i>);
+            return setShow(false);
+        }
         setShow(true);
+        setArrow(<i className="fas fa-angle-double-right"></i>);
     };
 
     return (
         <div className="modal">
             <button className="showModalButton" onClick={showModal}>
-                <i className="fas fa-angle-double-left"> </i>
+                {arrow}
             </button>
 
             <span className="profile-name">
@@ -64,7 +72,7 @@ export default function ProfileModal() {
                         onSubmit={(e) => submitModal(e)}
                     >
                         <h2 className="modaltitle">
-                            Give us a little bit information about yourself:
+                            Tell us a little bit more about yourself:
                         </h2>
                         <div className="label-container">
                             <span>National Cuisine</span>

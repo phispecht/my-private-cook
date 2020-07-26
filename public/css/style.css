@@ -16,7 +16,7 @@ button:focus {
 }
 
 .landing-top-right {
-    background-color: #51b73b;
+    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     width: 50%;
     min-height: 100vh;
     position: relative;
@@ -146,15 +146,9 @@ a.loginLink {
     margin-top: 0;
     padding: 10px;
     color: white;
-    background-color: #51b73b;
+    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     position: fixed;
-}
-
-.app-container {
-    background-image: url("../images/my-cooks-header.jpg");
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
+    z-index: 1;
 }
 
 .cook-link {
@@ -187,21 +181,33 @@ a.loginLink {
     background: rgba(81, 183, 59, 0.7);
 }
 
+.my-cooks-container {
+    background-image: url("../images/my-cooks-header.jpg");
+    background-attachment: fixed;
+    background-position: left;
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
 .my-cooks-container-child {
-    background-color: rgba(255, 255, 255, 0.7);
     width: 70%;
     height: 100vh;
     min-height: 500px;
     margin: 0 auto;
+    padding-top: 300px;
+    position: relative;
 }
 
 .modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
-    background-color: #51b73b;
+    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     color: white;
     padding: 10px 10px 10px 15px;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
     font-size: 1.2rem;
 }
 
@@ -210,8 +216,13 @@ a.loginLink {
     width: 150px;
 }
 
-.fa-angle-double-left {
+.profile-name {
     padding-right: 10px;
+}
+
+.fa-angle-double-left,
+.fa-angle-double-right {
+    padding-right: 5px;
     font-size: 20px;
     color: rgb(0, 17, 255);
 }
@@ -225,6 +236,7 @@ a.loginLink {
 .label-container span {
     border-top: 1px solid white;
     font-size: 16px;
+    padding-right: 5px;
 }
 
 .modalForm input:last-of-type {
@@ -233,4 +245,96 @@ a.loginLink {
 
 .modalForm {
     padding-bottom: 20px;
+}
+
+.my-cook {
+    display: block;
+    border-top: 1px solid lightgrey;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+
+.profilePic-screen {
+    width: 150px;
+    height: 150px;
+    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
+    cursor: pointer;
+    border: none;
+    color: transparent;
+}
+
+.profilePic-screen:focus {
+    outline: none;
+}
+
+.profileName-screen {
+    display: block;
+    font-weight: 800;
+    font-size: 20px;
+    color: #c9662e;
+}
+
+.profileCuisine-screen {
+    color: rgb(119, 119, 119);
+}
+
+.inline {
+    display: inline-block;
+    height: 150px;
+}
+
+.inline:first-of-type {
+    vertical-align: top;
+}
+
+.inline:last-of-type {
+    margin-left: 30px;
+}
+
+.inline-selects span:not(:first-of-type) {
+    margin-left: 30px;
+}
+
+.inline-selects .select {
+    display: inline-block;
+    color: rgb(119, 119, 119);
+}
+
+.cancel {
+    cursor: pointer;
+}
+
+.my-cook-big {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+    color: white;
+}
+
+.my-cook-big .select {
+    color: white;
+}
+
+.profilePic-screen-big {
+    height: 200px;
+    width: 200px;
+}
+
+.profileName-screen-big {
+    color: rgb(255 222 19);
+    font-weight: 800;
+    font-size: 26px;
+}
+
+.fa-angle-double-down {
+    color: rgb(0, 17, 255);
+    font-size: 28px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
 }

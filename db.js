@@ -30,10 +30,11 @@ exports.insertCook = (
     experiences,
     cook_on_site,
     shopping_food,
-    delivery
+    delivery,
+    id
 ) => {
     return db.query(
-        `INSERT INTO cooks (national_cuisine, hourly_wage, specialties, experiences, cook_on_site, shopping_food, delivery) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+        `INSERT INTO cooks (national_cuisine, hourly_wage, specialties, experiences, cook_on_site, shopping_food, delivery, cooks_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
         [
             national_cuisine,
             hourly_wage,
@@ -42,10 +43,32 @@ exports.insertCook = (
             cook_on_site,
             shopping_food,
             delivery,
+            id,
         ]
     );
 };
 
 exports.selectCooks = () => {
-    return db.query(`SELECT * FROM cooks`);
+    return db.query(`SELECT users.id, first, last, email, profilepic, national_cuisine,
+            hourly_wage,
+            specialties,
+            experiences,
+            cook_on_site,
+            shopping_food,
+            delivery, cooks.created_at FROM users JOIN cooks ON users.id = cooks.cooks_id
+            ORDER BY cooks.created_at DESC `);
+};
+
+exports.getCookModal = (id) => {
+    return db.query(
+        `SELECT users.id, first, last, email, profilepic, national_cuisine,
+            hourly_wage,
+            specialties,
+            experiences,
+            cook_on_site,
+            shopping_food,
+            delivery, cooks.created_at FROM users JOIN cooks ON users.id = cooks.cooks_id
+            WHERE users.id = $1`,
+        [id]
+    );
 };
