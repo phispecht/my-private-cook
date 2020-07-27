@@ -26,12 +26,11 @@ export default function Cooks() {
 
     if (cookId) {
         const id = cookId.id;
-        console.log(id);
 
         (async () => {
             const cook = await axios.get(`/getCookModal/` + id);
             setCookModal(cook);
-            console.log(cook);
+            console.log("cook", cook);
         })();
         setCookId(0);
         setShow(true);
@@ -41,13 +40,13 @@ export default function Cooks() {
         setShow(false);
     };
 
+    console.log("cooksData:", cookModal);
+    console.log("cookModal:", cooksData);
+
     if (show) {
         if (cookModal.length != 0) {
             var myCook = (
-                <div
-                    className="my-cook-big"
-                    key={cookModal.data.rows[0].created_at}
-                >
+                <div className="my-cook-big" key={cookModal.data.rows[0].id}>
                     <i
                         className="fas fa-angle-double-down"
                         onClick={myCookHide}
@@ -105,14 +104,17 @@ export default function Cooks() {
         }
     }
 
+    console.log(cooksData);
+
     return (
         <div className="my-cooks-container">
             <h1 className="h1-cooks">My private cook</h1>
             <div className="my-cooks-container-child">
-                {cooksData.length != 0 ? (
+                {cooksData ? (
                     cooksData.map((cook) => {
+                        console.log("html cook select", cook);
                         return (
-                            <div className="my-cook" key={cook.created_at}>
+                            <div className="my-cook" key={cook.id}>
                                 <div className="inline">
                                     <input
                                         readOnly

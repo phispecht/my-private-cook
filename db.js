@@ -34,7 +34,10 @@ exports.insertCook = (
     id
 ) => {
     return db.query(
-        `INSERT INTO cooks (national_cuisine, hourly_wage, specialties, experiences, cook_on_site, shopping_food, delivery, cooks_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+        `INSERT INTO cooks (national_cuisine, hourly_wage, specialties, experiences, cook_on_site, shopping_food, delivery, cooks_id) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+        ON CONFLICT (cooks_id)
+        DO UPDATE SET national_cuisine = $1, hourly_wage = $2, specialties=$3, experiences=$4, cook_on_site=$5, shopping_food=$6, delivery=$7 RETURNING *`,
         [
             national_cuisine,
             hourly_wage,

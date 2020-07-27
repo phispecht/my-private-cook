@@ -1,6 +1,8 @@
 import axios from "./axios";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addCook } from "./actions";
 
 export default function ProfileModal() {
     const [no_profile, setNo_profile] = useState("");
@@ -11,6 +13,7 @@ export default function ProfileModal() {
     const [arrow, setArrow] = useState(
         <i className="fas fa-angle-double-left"> </i>
     );
+    const dispatch = useDispatch();
 
     useEffect(() => {
         (async () => {
@@ -30,7 +33,8 @@ export default function ProfileModal() {
         axios
             .post("/submitCook", submitCook)
             .then(function (cookData) {
-                console.log(cookData);
+                dispatch(addCook(cookData.data.rows));
+                console.log("profileModal cookData:", cookData);
             })
             .catch(function (error) {
                 console.log(error);

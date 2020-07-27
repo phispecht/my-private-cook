@@ -250,8 +250,13 @@ a.loginLink {
 .my-cook {
     display: block;
     border-top: 1px solid lightgrey;
-    padding-top: 40px;
-    margin-bottom: 20px;
+    padding: 30px 0 30px 0;
+    color: rgb(119, 119, 119);
+}
+
+.my-cook:first-of-type {
+    margin-top: 40px;
+    border-top: none;
 }
 
 .profilePic-screen {
@@ -274,10 +279,6 @@ a.loginLink {
     color: #c9662e;
 }
 
-.profileCuisine-screen {
-    color: rgb(119, 119, 119);
-}
-
 .inline {
     display: inline-block;
     height: 150px;
@@ -297,7 +298,6 @@ a.loginLink {
 
 .inline-selects .select {
     display: inline-block;
-    color: rgb(119, 119, 119);
 }
 
 .cancel {
@@ -338,3 +338,12 @@ a.loginLink {
     transform: translate(-50%, 0);
     cursor: pointer;
 }
+
+.my-cook:hover {
+    background-color: #f0f0f0;
+    /*   color: white; */
+}
+
+/* .my-cook:hover .profileName-screen {
+    color: white;
+} */

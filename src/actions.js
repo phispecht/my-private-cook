@@ -7,3 +7,10 @@ export async function getCooks() {
         cooksData: cooksData.data.rows,
     };
 }
+
+export async function addCook(cookData) {
+    return {
+        type: "ADD_COOK",
+        cookData,
+    };
+}

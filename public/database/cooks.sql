@@ -10,6 +10,6 @@ CREATE TABLE cooks(
       delivery VARCHAR(255),
       hourly_wage VARCHAR(255) NOT NULL CHECK (hourly_wage != ''),
       rating VARCHAR(255),
-      cooks_id INT NOT NULL REFERENCES users(id),
+      cooks_id INT NOT NULL UNIQUE REFERENCES users(id),
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );

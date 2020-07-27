@@ -134,8 +134,10 @@ app.post("/submitCook", (req, res) => {
         delivery,
         id
     )
-        .then((cookData) => {
-            res.json(cookData);
+        .then(() => {
+            return db.selectCooks().then(function (cookData) {
+                res.json(cookData);
+            });
         })
         .catch(function (error) {
             res.json("error");
