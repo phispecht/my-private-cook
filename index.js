@@ -2,22 +2,34 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const db = require("./db");
-const { json } = require("express");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const { hash, compare } = require("./src/bc");
 
-app.use(compression());
-app.use(express.json());
+const { s3Url } = require("./config.json");
+const s3 = require("./s3.js");
+const multer = require("multer");
+const uidSafe = require("uid-safe");
+const path = require("path");
+const { json } = require("express");
 
-app.use(express.static("./public"));
+const diskStorage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, __dirname + "/uploads");
+    },
+    filename: function (req, file, callback) {
+        uidSafe(24).then(function (uid) {
+            callback(null, uid + path.extname(file.originalname));
+        });
+    },
+});
 
-app.use(
-    cookieSession({
-        secret: "cookie",
-        maxAge: 1000 * 60 * 60 * 24 * 14,
-    })
-);
+const uploader = multer({
+    storage: diskStorage,
+    limits: {
+        fileSize: 2097152,
+    },
+});
 
 if (process.env.NODE_ENV != "production") {
     app.use(
@@ -29,6 +41,18 @@ if (process.env.NODE_ENV != "production") {
 } else {
     app.use("/bundle.js", (req, res) => res.sendFile(`${__dirname}/bundle.js`));
 }
+
+app.use(compression());
+app.use(express.json());
+
+app.use(
+    cookieSession({
+        secret: "cookie",
+        maxAge: 1000 * 60 * 60 * 24 * 14,
+    })
+);
+
+app.use(express.static("./public"));
 
 app.use(
     express.static("./src"),
@@ -165,6 +189,36 @@ app.get("/getCookModal/:id", (req, res) => {
         .catch(function (error) {
             console.log(error);
         });
+});
+
+app.post("/upload", uploader.array("file", 5), s3.upload, (req, res) => {
+    let filepaths = [];
+    const id = req.session.userId;
+
+    for (let i = 0; i < req.files.length; i++) {
+        let { filename } = req.files[i];
+        let imageUrl = `${s3Url}${filename}`;
+
+        filepaths.push(imageUrl);
+    }
+
+    if (req.files.length != 0) {
+        db.insertImage(id, ...filepaths)
+            .then(() => {
+                db.selectCooks().then(function (cookData) {
+                    res.json(cookData);
+                });
+            })
+            .catch(function () {
+                res.json({
+                    success: false,
+                });
+            });
+    } else {
+        res.json({
+            success: false,
+        });
+    }
 });
 
 app.get("*", function (req, res) {

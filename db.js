@@ -58,7 +58,8 @@ exports.selectCooks = () => {
             experiences,
             cook_on_site,
             shopping_food,
-            delivery, cooks.created_at FROM users JOIN cooks ON users.id = cooks.cooks_id
+            delivery, cooks.created_at, image1, image2, image3, image4, image5 FROM users JOIN cooks ON users.id = cooks.cooks_id
+            LEFT JOIN images ON users.id = images.users_id
             ORDER BY cooks.created_at DESC `);
 };
 
@@ -70,8 +71,24 @@ exports.getCookModal = (id) => {
             experiences,
             cook_on_site,
             shopping_food,
-            delivery, cooks.created_at FROM users JOIN cooks ON users.id = cooks.cooks_id
+            delivery, cooks.created_at, image1, image2, image3, image4, image5 FROM users JOIN cooks ON users.id = cooks.cooks_id
+            JOIN images ON users.id = images.users_id
             WHERE users.id = $1`,
         [id]
+    );
+};
+
+exports.insertImage = (id, image1, image2, image3, image4, image5) => {
+    return db.query(
+        `INSERT INTO images (users_id, image1, image2, image3, image4, image5) 
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+        [
+            id,
+            image1 || null,
+            image2 || null,
+            image3 || null,
+            image4 || null,
+            image5 || null,
+        ]
     );
 };

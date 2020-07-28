@@ -222,6 +222,8 @@ a.loginLink {
 
 .fa-angle-double-left,
 .fa-angle-double-right {
+    padding-bottom: 10px;
+    padding-top: 10px;
     padding-right: 5px;
     font-size: 20px;
     color: rgb(0, 17, 255);
@@ -244,7 +246,11 @@ a.loginLink {
 }
 
 .modalForm {
+    overflow-y: scroll;
+    padding-left: 30px;
+    height: 680px;
     padding-bottom: 20px;
+    padding-right: 10px;
 }
 
 .my-cook {
@@ -263,6 +269,7 @@ a.loginLink {
     width: 150px;
     height: 150px;
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
+    object-fit: cover;
     cursor: pointer;
     border: none;
     color: transparent;
@@ -341,9 +348,51 @@ a.loginLink {
 
 .my-cook:hover {
     background-color: #f0f0f0;
-    /*   color: white; */
 }
 
-/* .my-cook:hover .profileName-screen {
+input[type="file"] {
+    display: none;
+}
+
+.upload-button {
+    background-color: rgb(0, 17, 255);
     color: white;
-} */
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+}
+
+.select-images {
+    background-color: white;
+    color: rgb(0, 17, 255);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+}
+
+.uploader-modal {
+    margin-top: 20px;
+}
+
+.uploader-modal .upload-buttons {
+    display: inline-block;
+    font-family: "Oxanium", cursive;
+}
+
+.uploader-modal :first-child {
+    border-top-left-radius: 5px;
+}
+
+.uploader-modal :last-child {
+    border-bottom-right-radius: 5px;
+}
+
+.upload-buttons-container {
+    margin-top: 10px;
+}
+
+.uploader-modal {
+    text-align: center;
+}

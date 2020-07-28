@@ -1,8 +1,9 @@
 import axios from "./axios";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { addCook } from "./actions";
+import Uploader from "./uploader";
 
 export default function ProfileModal() {
     const [no_profile, setNo_profile] = useState("");
@@ -34,7 +35,6 @@ export default function ProfileModal() {
             .post("/submitCook", submitCook)
             .then(function (cookData) {
                 dispatch(addCook(cookData.data.rows));
-                console.log("profileModal cookData:", cookData);
             })
             .catch(function (error) {
                 console.log(error);
@@ -76,7 +76,7 @@ export default function ProfileModal() {
                         onSubmit={(e) => submitModal(e)}
                     >
                         <h2 className="modaltitle">
-                            Tell us a little bit more about yourself:
+                            Tell us a little bit more about yourself
                         </h2>
                         <div className="label-container">
                             <span>National Cuisine</span>
@@ -156,6 +156,12 @@ export default function ProfileModal() {
                             placeholder="Hourly wage"
                             onChange={(e) => handleChange(e)}
                         />
+                        <BrowserRouter>
+                            <Route
+                                path="/my-cooks"
+                                render={() => <Uploader />}
+                            />
+                        </BrowserRouter>
                         <input
                             className="registerButton"
                             type="submit"

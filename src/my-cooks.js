@@ -30,7 +30,6 @@ export default function Cooks() {
         (async () => {
             const cook = await axios.get(`/getCookModal/` + id);
             setCookModal(cook);
-            console.log("cook", cook);
         })();
         setCookId(0);
         setShow(true);
@@ -39,9 +38,6 @@ export default function Cooks() {
     const myCookHide = () => {
         setShow(false);
     };
-
-    console.log("cooksData:", cookModal);
-    console.log("cookModal:", cooksData);
 
     if (show) {
         if (cookModal.length != 0) {
@@ -53,13 +49,12 @@ export default function Cooks() {
                     ></i>
                     <div className="inline">
                         <input
+                            type="image"
+                            src={cookModal.data.rows[0].image1}
                             readOnly
                             name="profilePic"
                             className="profilePic-screen-big"
-                            onClick={myCookHide}
-                        >
-                            {cookModal.data.rows[0].profilepic}
-                        </input>
+                        ></input>
                     </div>
                     <div className="inline">
                         <div className="profileName-screen-big">
@@ -67,17 +62,20 @@ export default function Cooks() {
                             {cookModal.data.rows[0].last}
                         </div>
                         <div className="profileEmail-screen-big">
-                            {cookModal.data.rows[0].email}
+                            <b>Email: </b> {cookModal.data.rows[0].email}
                         </div>
 
                         <div className="profileCuisine-screen-big">
+                            <b>National cuisine: </b>
                             {cookModal.data.rows[0].national_cuisine}
                         </div>
 
                         <div className="profileSpecialties-screen-big">
+                            <b>Specialties: </b>
                             {cookModal.data.rows[0].specialties}
                         </div>
                         <div className="profileExperiences-screen-big">
+                            <b>Experience: </b>
                             {cookModal.data.rows[0].experiences}
                         </div>
                         <div className="inline-selects">
@@ -104,27 +102,25 @@ export default function Cooks() {
         }
     }
 
-    console.log(cooksData);
-
     return (
         <div className="my-cooks-container">
             <h1 className="h1-cooks">My private cook</h1>
             <div className="my-cooks-container-child">
                 {cooksData ? (
                     cooksData.map((cook) => {
-                        console.log("html cook select", cook);
+                        console.log(cooksData);
                         return (
                             <div className="my-cook" key={cook.id}>
                                 <div className="inline">
                                     <input
+                                        type="image"
+                                        src={cook.image1}
                                         readOnly
                                         name="id"
                                         className="profilePic-screen"
                                         value={cook.id}
                                         onClick={(e) => myCookShow(e)}
-                                    >
-                                        {cook.profilepic}
-                                    </input>
+                                    ></input>
                                 </div>
                                 <div className="inline">
                                     <div className="profileName-screen">

@@ -9,5 +9,10 @@ export default function (state = {}, action) {
             cooksData: action.cookData,
         });
     }
+    if (action.type == "ADD_IMAGE") {
+        state = Object.assign({}, state, {
+            cooksData: action.uploadData,
+        });
+    }
     return state;
 }

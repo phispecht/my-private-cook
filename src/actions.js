@@ -14,3 +14,10 @@ export async function addCook(cookData) {
         cookData,
     };
 }
+
+export async function addImage(uploadData) {
+    return {
+        type: "ADD_IMAGE",
+        uploadData,
+    };
+}
