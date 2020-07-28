@@ -72,7 +72,7 @@ exports.getCookModal = (id) => {
             cook_on_site,
             shopping_food,
             delivery, cooks.created_at, image1, image2, image3, image4, image5 FROM users JOIN cooks ON users.id = cooks.cooks_id
-            JOIN images ON users.id = images.users_id
+            LEFT JOIN images ON users.id = images.users_id
             WHERE users.id = $1`,
         [id]
     );

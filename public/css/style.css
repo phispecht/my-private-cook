@@ -268,7 +268,6 @@ a.loginLink {
 .profilePic-screen {
     width: 150px;
     height: 150px;
-    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     object-fit: cover;
     cursor: pointer;
     border: none;
@@ -313,6 +312,7 @@ a.loginLink {
 
 .my-cook-big {
     position: fixed;
+    text-align: center;
     bottom: 0;
     left: 0;
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
@@ -326,9 +326,15 @@ a.loginLink {
     color: white;
 }
 
+.my-cook-big-text {
+    text-align: left;
+}
+
 .profilePic-screen-big {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    color: transparent;
 }
 
 .profileName-screen-big {
@@ -341,8 +347,8 @@ a.loginLink {
     color: rgb(0, 17, 255);
     font-size: 28px;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
+    left: 94%;
+    top: 8%;
     cursor: pointer;
 }
 
@@ -395,4 +401,22 @@ input[type="file"] {
 
 .uploader-modal {
     text-align: center;
+}
+
+.image-galery .imageGalery-image {
+    display: inline-block;
+    color: transparent;
+}
+
+.imageGalery-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: none;
+    color: transparent;
+}
+
+.inline-image-galery {
+    vertical-align: top;
 }

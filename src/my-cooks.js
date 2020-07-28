@@ -43,58 +43,119 @@ export default function Cooks() {
         if (cookModal.length != 0) {
             var myCook = (
                 <div className="my-cook-big" key={cookModal.data.rows[0].id}>
-                    <i
-                        className="fas fa-angle-double-down"
-                        onClick={myCookHide}
-                    ></i>
-                    <div className="inline">
-                        <input
-                            type="image"
-                            src={cookModal.data.rows[0].image1}
-                            readOnly
-                            name="profilePic"
-                            className="profilePic-screen-big"
-                        ></input>
-                    </div>
-                    <div className="inline">
-                        <div className="profileName-screen-big">
-                            {cookModal.data.rows[0].first}{" "}
-                            {cookModal.data.rows[0].last}
+                    <div className="my-cook-big-child">
+                        <i
+                            className="fas fa-angle-double-down"
+                            onClick={myCookHide}
+                        ></i>
+                        <div className="inline">
+                            <input
+                                type="image"
+                                src={cookModal.data.rows[0].image1}
+                                readOnly
+                                name="profilePic"
+                                className="profilePic-screen-big"
+                                value={cookModal.data.rows[0].id}
+                                onClick={(e) => myCookShow(e)}
+                                alt="No Image added"
+                            ></input>
                         </div>
-                        <div className="profileEmail-screen-big">
-                            <b>Email: </b> {cookModal.data.rows[0].email}
+                        <div className="inline inline-image-galery">
+                            {/* ////////// IMAGE GALERY ///////////// */}
+                            <div className="image-galery">
+                                <input
+                                    type="image"
+                                    src={cookModal.data.rows[0].image1}
+                                    readOnly
+                                    name="id"
+                                    className="imageGalery-image"
+                                    value={cookModal.data.rows[0].id}
+                                    onClick={(e) => myCookShow(e)}
+                                    alt="No Image added"
+                                ></input>
+                                <input
+                                    type="image"
+                                    src={cookModal.data.rows[0].image2}
+                                    readOnly
+                                    name="id"
+                                    className="imageGalery-image"
+                                    value={cookModal.data.rows[0].id}
+                                    onClick={(e) => myCookShow(e)}
+                                    alt="No Image added"
+                                ></input>
+                                <input
+                                    type="image"
+                                    src={cookModal.data.rows[0].image3}
+                                    readOnly
+                                    name="id"
+                                    className="imageGalery-image"
+                                    value={cookModal.data.rows[0].id}
+                                    onClick={(e) => myCookShow(e)}
+                                    alt="No Image added"
+                                ></input>
+                                <input
+                                    type="image"
+                                    src={cookModal.data.rows[0].image4}
+                                    readOnly
+                                    name="id"
+                                    className="imageGalery-image"
+                                    value={cookModal.data.rows[0].id}
+                                    onClick={(e) => myCookShow(e)}
+                                    alt="No Image added"
+                                ></input>
+                                <input
+                                    type="image"
+                                    src={cookModal.data.rows[0].image5}
+                                    readOnly
+                                    name="id"
+                                    className="imageGalery-image"
+                                    value={cookModal.data.rows[0].id}
+                                    onClick={(e) => myCookShow(e)}
+                                    alt="No Image added"
+                                ></input>
+                            </div>
+                            {/* //////////////////////////////////// */}
                         </div>
+                        <div className="inline my-cook-big-text">
+                            <div className="profileName-screen-big">
+                                {cookModal.data.rows[0].first}{" "}
+                                {cookModal.data.rows[0].last}
+                            </div>
+                            <div className="profileEmail-screen-big">
+                                <b>Email: </b> {cookModal.data.rows[0].email}
+                            </div>
 
-                        <div className="profileCuisine-screen-big">
-                            <b>National cuisine: </b>
-                            {cookModal.data.rows[0].national_cuisine}
-                        </div>
+                            <div className="profileCuisine-screen-big">
+                                <b>National cuisine: </b>
+                                {cookModal.data.rows[0].national_cuisine}
+                            </div>
 
-                        <div className="profileSpecialties-screen-big">
-                            <b>Specialties: </b>
-                            {cookModal.data.rows[0].specialties}
-                        </div>
-                        <div className="profileExperiences-screen-big">
-                            <b>Experience: </b>
-                            {cookModal.data.rows[0].experiences}
-                        </div>
-                        <div className="inline-selects">
-                            <span className="profileCookOnSite-screen-big select">
-                                <b>Cook on site: </b>
-                                {cookModal.data.rows[0].cook_on_site}
-                            </span>
-                            <span className="profileShopping-screen-big select">
-                                <b>Shopping groceries: </b>
-                                {cookModal.data.rows[0].shopping_food}
-                            </span>
-                            <span className="profileDelivery-screen-big select">
-                                <b>Delivery: </b>
-                                {cookModal.data.rows[0].delivery}
-                            </span>
-                            <span className="profileWage-screen-big select">
-                                <b>Wage/hour: </b>
-                                {cookModal.data.rows[0].hourly_wage}
-                            </span>
+                            <div className="profileSpecialties-screen-big">
+                                <b>Specialties: </b>
+                                {cookModal.data.rows[0].specialties}
+                            </div>
+                            <div className="profileExperiences-screen-big">
+                                <b>Experience: </b>
+                                {cookModal.data.rows[0].experiences}
+                            </div>
+                            <div className="inline-selects">
+                                <span className="profileCookOnSite-screen-big select">
+                                    <b>Cook on site: </b>
+                                    {cookModal.data.rows[0].cook_on_site}
+                                </span>
+                                <span className="profileShopping-screen-big select">
+                                    <b>Shopping groceries: </b>
+                                    {cookModal.data.rows[0].shopping_food}
+                                </span>
+                                <span className="profileDelivery-screen-big select">
+                                    <b>Delivery: </b>
+                                    {cookModal.data.rows[0].delivery}
+                                </span>
+                                <span className="profileWage-screen-big select">
+                                    <b>Wage/hour: </b>
+                                    {cookModal.data.rows[0].hourly_wage}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,20 +169,34 @@ export default function Cooks() {
             <div className="my-cooks-container-child">
                 {cooksData ? (
                     cooksData.map((cook) => {
-                        console.log(cooksData);
+                        if (cook.image1 == undefined) {
+                            var defaultOrNot = (
+                                <input
+                                    type="image"
+                                    src="/images/default.jpg"
+                                    readOnly
+                                    name="id"
+                                    className="profilePic-screen"
+                                    value={cook.id}
+                                    onClick={(e) => myCookShow(e)}
+                                ></input>
+                            );
+                        } else {
+                            var defaultOrNot = (
+                                <input
+                                    type="image"
+                                    src={cook.image1}
+                                    readOnly
+                                    name="id"
+                                    className="profilePic-screen"
+                                    value={cook.id}
+                                    onClick={(e) => myCookShow(e)}
+                                ></input>
+                            );
+                        }
                         return (
                             <div className="my-cook" key={cook.id}>
-                                <div className="inline">
-                                    <input
-                                        type="image"
-                                        src={cook.image1}
-                                        readOnly
-                                        name="id"
-                                        className="profilePic-screen"
-                                        value={cook.id}
-                                        onClick={(e) => myCookShow(e)}
-                                    ></input>
-                                </div>
+                                <div className="inline">{defaultOrNot}</div>
                                 <div className="inline">
                                     <div className="profileName-screen">
                                         {cook.first} {cook.last}

@@ -151,7 +151,7 @@ export default function ProfileModal() {
                         </div>
                         <input
                             required
-                            type="text"
+                            type="number"
                             name="hourly_wage"
                             placeholder="Hourly wage"
                             onChange={(e) => handleChange(e)}

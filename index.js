@@ -184,6 +184,7 @@ app.get("/getCookModal/:id", (req, res) => {
     const id = req.params.id;
     db.getCookModal(id)
         .then((cookModalData) => {
+            console.log("cookModal-server-after-db", cookModalData);
             res.json(cookModalData);
         })
         .catch(function (error) {
