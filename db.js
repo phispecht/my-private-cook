@@ -92,3 +92,21 @@ exports.insertImage = (id, image1, image2, image3, image4, image5) => {
         ]
     );
 };
+
+exports.insertComment = (id, comment) => {
+    return db.query(
+        `INSERT INTO comments (users_id, comment) 
+        VALUES ($1, $2) 
+        ON CONFLICT (users_id)
+        DO UPDATE SET comment = $2 RETURNING *`,
+        [id, comment]
+    );
+};
+
+exports.getComments = (id) => {
+    return db.query(`SELECT comment FROM comments WHERE users_id = $1`, [id]);
+};
+
+exports.getLogedInName = (userId) => {
+    return db.query(`SELECT * FROM users WHERE id = $1`, [userId]);
+};

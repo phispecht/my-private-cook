@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Route } from "react-router-dom";
 import { getCooks } from "./actions";
+import Comments from "./comments";
 import axios from "axios";
 
 export default function Cooks() {
@@ -8,6 +10,7 @@ export default function Cooks() {
     const cooksData = useSelector((state) => state && state.cooksData);
     const [show, setShow] = useState(false);
     const [cookId, setCookId] = useState(0);
+    const [commentId, setCommentId] = useState(0);
     const [cookModal, setCookModal] = useState([]);
 
     useEffect(() => {
@@ -26,11 +29,11 @@ export default function Cooks() {
 
     if (cookId) {
         const id = cookId.id;
-
         (async () => {
             const cook = await axios.get(`/getCookModal/` + id);
             setCookModal(cook);
         })();
+        setCommentId(id);
         setCookId(0);
         setShow(true);
     }
@@ -43,6 +46,12 @@ export default function Cooks() {
         if (cookModal.length != 0) {
             var myCook = (
                 <div className="my-cook-big" key={cookModal.data.rows[0].id}>
+                    <BrowserRouter>
+                        <Route
+                            path="/my-cooks"
+                            render={() => <Comments id={commentId} />}
+                        />
+                    </BrowserRouter>
                     <div className="my-cook-big-child">
                         <i
                             className="fas fa-angle-double-down"

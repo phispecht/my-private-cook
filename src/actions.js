@@ -21,3 +21,19 @@ export async function addImage(uploadData) {
         uploadData,
     };
 }
+
+export async function addComment(commentData) {
+    return {
+        type: "ADD_COMMENT",
+        commentData,
+    };
+}
+
+export async function getComments(id) {
+    const getAllComments = await axios.get(`/getComments/${id}`);
+
+    return {
+        type: "GET_COMMENTS",
+        getAllComments: getAllComments.data.rows,
+    };
+}

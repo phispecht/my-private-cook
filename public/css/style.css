@@ -116,7 +116,8 @@ h1 {
 
 .registerButton,
 .loginButton,
-.modalButton {
+.modalButton,
+.comment-form button {
     margin: 0 auto;
     width: 110px;
     background-color: #c9662e;
@@ -420,3 +421,34 @@ input[type="file"] {
 .inline-image-galery {
     vertical-align: top;
 }
+
+.comment-form {
+    position: fixed;
+    transform: translate(-50%);
+    height: 200px;
+    width: 300px;
+    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
+    left: 82%;
+    top: 50%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.comment-form textarea {
+    width: 200px;
+    height: 100px;
+}
+
+.comment-form button {
+    margin: 0 auto;
+    background-color: #c9662e;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* .comment-form p {
+    overflow-y: scroll;
+    height: 50px;
+} */

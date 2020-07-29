@@ -184,7 +184,6 @@ app.get("/getCookModal/:id", (req, res) => {
     const id = req.params.id;
     db.getCookModal(id)
         .then((cookModalData) => {
-            console.log("cookModal-server-after-db", cookModalData);
             res.json(cookModalData);
         })
         .catch(function (error) {
@@ -221,6 +220,42 @@ app.post("/upload", uploader.array("file", 5), s3.upload, (req, res) => {
         });
     }
 });
+
+app.post("/sendComment", (req, res) => {
+    const comment = req.body.comment;
+    const id = req.body.id;
+
+    db.insertComment(id, comment)
+        .then((commentData) => {
+            res.json(commentData);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+app.get("/getComments/:id", (req, res) => {
+    const id = req.params.id;
+    const userId = req.session.userId;
+    let comment = "";
+
+    db.getComments(id)
+        .then((getComments) => {
+            res.json(getComments);
+        })
+
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+/* comment = getComments; */
+/* .then(() => {
+            db.getLogedInName(userId);
+        })
+        .then((LogedInName) => {
+            res.json(LogedInName, comment);
+        }) */
 
 app.get("*", function (req, res) {
     res.sendFile(__dirname + "/index.html");
