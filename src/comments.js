@@ -9,7 +9,7 @@ export default function Comments({ id }) {
     const getAllComments = useSelector(
         (state) => state && state.getAllComments
     );
-    let displayComment = "";
+    let displayComments = "";
 
     useEffect(() => {
         (async () => {
@@ -38,17 +38,15 @@ export default function Comments({ id }) {
 
     console.log("getAllComments:", getAllComments);
 
-    if (getAllComments != undefined) {
-        console.log("getAllComments:", getAllComments);
-        getAllComments.map((element) => {
-            displayComment = element.comment;
-        });
-    }
-
     return (
         <div>
             <form className="comment-form" onSubmit={(e) => sendComment(e)}>
-                <p>{displayComment}</p> <br />
+                <p className="commentSection">
+                    {getAllComments &&
+                        getAllComments.map((element) => (
+                            <p key={element.id}>{element.comment}</p>
+                        ))}
+                </p>
                 <textarea
                     required
                     type="text"

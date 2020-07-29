@@ -97,14 +97,16 @@ exports.insertComment = (id, comment) => {
     return db.query(
         `INSERT INTO comments (users_id, comment) 
         VALUES ($1, $2) 
-        ON CONFLICT (users_id)
-        DO UPDATE SET comment = $2 RETURNING *`,
+         RETURNING *`,
         [id, comment]
     );
 };
 
 exports.getComments = (id) => {
-    return db.query(`SELECT comment FROM comments WHERE users_id = $1`, [id]);
+    return db.query(
+        `SELECT comment FROM comments WHERE users_id = $1 ORDER BY created_at DESC`,
+        [id]
+    );
 };
 
 exports.getLogedInName = (userId) => {

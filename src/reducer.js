@@ -19,16 +19,12 @@ export default function (state = {}, action) {
         state = Object.assign({}, state, {
             getAllComments: action.getAllComments,
         });
-        /*    console.log("getcommentState", state);
-        console.log("getcommentAction", action); */
     }
 
     if (action.type == "ADD_COMMENT") {
         state = Object.assign({}, state, {
             getAllComments: state.getAllComments.concat(action.commentData),
         });
-        /*   console.log("addcommentState", state);
-        console.log("addcommentAction", action); */
     }
 
     return state;

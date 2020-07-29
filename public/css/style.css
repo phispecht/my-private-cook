@@ -425,7 +425,7 @@ input[type="file"] {
 .comment-form {
     position: fixed;
     transform: translate(-50%);
-    height: 200px;
+    height: 137px;
     width: 300px;
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     left: 82%;
@@ -436,7 +436,6 @@ input[type="file"] {
 
 .comment-form textarea {
     width: 200px;
-    height: 100px;
 }
 
 .comment-form button {
@@ -448,7 +447,9 @@ input[type="file"] {
     padding: 10px;
 }
 
-/* .comment-form p {
+.comment-form .commentSection {
     overflow-y: scroll;
-    height: 50px;
-} */
+    padding: 20px;
+    text-align: left;
+    height: 80px;
+}
