@@ -667,7 +667,7 @@ footer .footer-logo {
     display: block;
 }
 
-/*/Media Queries /*/
+/*/Media Queries -> Responsivity /*/
 
 @media screen and (max-width: 1420px) {
     .comment-form {
