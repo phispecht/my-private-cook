@@ -2,6 +2,7 @@ const spicedPg = require("spiced-pg");
 
 let db;
 if (process.env.DATABASE_URL) {
+    console.log("hey");
     db = spicedPg(process.env.DATABASE_URL);
 } else {
     const { user, pw } = require("./secrets.json");

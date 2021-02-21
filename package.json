@@ -1,7 +1,7 @@
 {
     "name": "my-private-cook",
     "version": "1.0.0",
-    "description": "",
+    "description": "my private cook",
     "main": "index.js",
     "scripts": {
         "build": "node build.js",
