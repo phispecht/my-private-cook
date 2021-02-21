@@ -6,6 +6,8 @@ import { getCooks } from "../redux/actions";
 import ProfileModal from "./profileModal";
 import UploaderModal from "./addCooks";
 
+// this page gives an overview of all cooks registered on my private cook
+
 export default function Cooks() {
     const dispatch = useDispatch();
     const cooksData = useSelector((state) => state && state.cooksData);

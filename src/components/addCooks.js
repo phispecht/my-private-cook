@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { addCook } from "../redux/actions";
 import Uploader from "../uploader";
 
+// modal to add new cooks to the page
+
 export default function addCooks() {
     const [no_profile, setNo_profile] = useState("");
     const [name, setName] = useState("");

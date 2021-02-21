@@ -3,6 +3,8 @@ import Login from "./login";
 import Registration from "./registration";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
+// the landing page including registration and login
+
 export default function Landing() {
     return (
         <div className="landing-container-top">

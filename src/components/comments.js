@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, addComment } from "../redux/actions";
 
+// the comment section
+
 export default function Comments({ id }) {
     const [comment, setComment] = useState("");
     const [error, setError] = useState("");
-    const [changeTimestamp, setChangeTimestamp] = useState("");
     const dispatch = useDispatch();
     const getAllComments = useSelector(
         (state) => state && state.getAllComments
