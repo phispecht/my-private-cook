@@ -10,4 +10,4 @@ node bundle-server
 npm start
 ```
 
-Afterwards got to http://localhost:8080/
+Afterwards go to http://localhost:8080/
