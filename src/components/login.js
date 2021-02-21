@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import axios from "./axios";
+import { Link } from "react-router-dom";
+import axios from "../axios";
 
 export default function Login() {
     const [login, setLogin] = useState("");
@@ -45,9 +45,11 @@ export default function Login() {
                     onChange={(e) => handleChange(e)}
                 />
                 <input className="loginButton" type="submit" value="Submit" />
-                {/* <Link className="loginLink" to="/reset">
-                        &gt; Forgot your password? Click here!
-                    </Link> */}
+                <div className="loginRegistration">
+                    <Link className="loginLink" to="/sign-up">
+                        Sign up
+                    </Link>
+                </div>
                 <br></br>
                 <span className="error">{error}</span>
             </form>

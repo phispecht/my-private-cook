@@ -224,20 +224,31 @@ app.post("/upload", uploader.array("file", 5), s3.upload, (req, res) => {
 app.post("/sendComment", (req, res) => {
     const comment = req.body.comment;
     const id = req.body.id;
+    const userId = req.session.userId;
 
-    db.insertComment(id, comment)
-        .then((commentData) => {
-            res.json(commentData);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    if (userId != undefined) {
+        db.selectCommentProfile(userId)
+            .then((userData) => {
+                const firstName = userData.rows[0].first;
+                const lastName = userData.rows[0].last;
+                const email = userData.rows[0].email;
+                db.insertComment(id, firstName, lastName, email, comment).then(
+                    (commentData) => {
+                        res.json(commentData);
+                    }
+                );
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+    } else {
+        res.json("Not registered!");
+    }
 });
 
 app.get("/getComments/:id", (req, res) => {
     const id = req.params.id;
-    const userId = req.session.userId;
-    let comment = "";
 
     db.getComments(id)
         .then((getComments) => {
@@ -248,14 +259,6 @@ app.get("/getComments/:id", (req, res) => {
             console.log(error);
         });
 });
-
-/* comment = getComments; */
-/* .then(() => {
-            db.getLogedInName(userId);
-        })
-        .then((LogedInName) => {
-            res.json(LogedInName, comment);
-        }) */
 
 app.get("*", function (req, res) {
     res.sendFile(__dirname + "/index.html");

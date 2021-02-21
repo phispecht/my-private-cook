@@ -1,19 +1,17 @@
-import axios from "./axios";
+import axios from "../axios";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addCook } from "./actions";
-import Uploader from "./uploader";
+import { addCook } from "../redux/actions";
+import Uploader from "../uploader";
 
-export default function ProfileModal() {
+export default function addCooks() {
     const [no_profile, setNo_profile] = useState("");
     const [name, setName] = useState("");
     const [greeting, setGreeting] = useState("");
     const [submitCook, setSubmitCook] = useState("");
     const [show, setShow] = useState(false);
-    const [arrow, setArrow] = useState(
-        <i className="fas fa-angle-double-left"> </i>
-    );
+    const [arrow, setArrow] = useState(<i className="fas fa-chevron-left"></i>);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,7 +19,7 @@ export default function ProfileModal() {
             const profile = await axios.get(`/profile`);
             if (profile.data == "no_profile" || profile.data.rows.length == 0) {
                 setArrow("");
-                return setNo_profile("Register to interact");
+                return setNo_profile("Sign up");
             }
             setName(profile.data.rows[0].first);
             setGreeting("Hello");
@@ -47,36 +45,40 @@ export default function ProfileModal() {
 
     const showModal = () => {
         if (show == true) {
-            setArrow(<i className="fas fa-angle-double-left"> </i>);
+            setArrow(<i className="fas fa-chevron-left"></i>);
             return setShow(false);
         }
         setShow(true);
-        setArrow(<i className="fas fa-angle-double-right"></i>);
+        setArrow(<i className="fas fa-chevron-right"></i>);
     };
 
     return (
         <div className="modal">
-            <button className="showModalButton" onClick={showModal}>
-                {arrow}
-            </button>
+            <div className="modalName-container">
+                <button className="showModalButton" onClick={showModal}>
+                    {arrow}
+                </button>
 
-            <span className="profile-name">
-                <BrowserRouter forceRefresh={true}>
-                    <Link className="profile-login-link" to="/">
-                        {no_profile}
-                    </Link>
-                </BrowserRouter>
-                {greeting} {name}
-            </span>
+                <span className="profile-name">
+                    {no_profile != "" ? (
+                        <Link className="profile-login-link" to="/sign-up">
+                            <i className="fas fa-user-plus"></i> {no_profile}
+                        </Link>
+                    ) : (
+                        <i className="far fa-user-circle"></i>
+                    )}
+                    {greeting} {name}
+                </span>
+            </div>
 
-            {show ? (
+            {show && (
                 <span className="modalForm-container">
                     <form
                         className="modalForm"
                         onSubmit={(e) => submitModal(e)}
                     >
                         <h2 className="modaltitle">
-                            Tell us a little bit more about yourself
+                            Tell us a bit more about yourself
                         </h2>
                         <div className="label-container">
                             <span>National Cuisine</span>
@@ -163,14 +165,12 @@ export default function ProfileModal() {
                             />
                         </BrowserRouter>
                         <input
-                            className="registerButton"
+                            className="addCook-button"
                             type="submit"
                             value="Submit"
                         />
                     </form>
                 </span>
-            ) : (
-                <span></span>
             )}
         </div>
     );

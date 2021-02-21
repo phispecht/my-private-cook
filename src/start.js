@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Landing from "./landing";
+import Landing from "./components/landing";
 import App from "./app";
 
+import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import reduxPromise from "redux-promise";
 import { composeWithDevTools } from "redux-devtools-extension";
-import reducer from "./reducer";
+import reducer from "./redux/reducer";
 
 const store = createStore(
     reducer,
@@ -17,14 +18,15 @@ const store = createStore(
 let elem;
 if (location.pathname === "/") {
     elem = <Landing />;
-} else if (location.pathname === "/login") {
-    elem = <Landing />;
 } else {
     elem = (
         <Provider store={store}>
-            <App />;
+            <App />
         </Provider>
     );
 }
 
-ReactDOM.render(elem, document.querySelector("main"));
+ReactDOM.render(
+    <BrowserRouter>{elem}</BrowserRouter>,
+    document.querySelector("main")
+);

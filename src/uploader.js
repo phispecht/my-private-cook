@@ -1,7 +1,7 @@
 import axios from "./axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addImage } from "./actions";
+import { addImage } from "./redux/actions";
 
 export default function Uploader() {
     const [files, setFiles] = useState([]);
@@ -9,8 +9,6 @@ export default function Uploader() {
 
     const upload = (e) => {
         e.preventDefault();
-
-        console.log(files);
 
         var formData = new FormData();
 
@@ -32,18 +30,16 @@ export default function Uploader() {
         setFiles(e.target.files);
     };
 
-    console.log("setFile:", files);
-
     return (
         <div className="uploader-modal">
-            Uploade your food-images
+            Uploade up to 5 of your food-images
             <br />
             <div className="upload-buttons-container">
                 <label
                     htmlFor="file-upload"
                     className="select-images upload-buttons"
                 >
-                    1. Select Images
+                    1. Select images
                 </label>
                 <input
                     id="file-upload"
@@ -57,7 +53,7 @@ export default function Uploader() {
                     className="upload-button upload-buttons"
                     onClick={(e) => upload(e)}
                 >
-                    2. Upload
+                    2. Press me to Upload
                 </button>
             </div>
         </div>

@@ -8,11 +8,19 @@ button:focus {
     outline: none;
 }
 
+input[type="submit"] {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.6);
+}
+
 .landing-top-left {
-    background-image: url("../images/landing-page-dish.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
+        url("../images/landing-page-dish.jpg");
     width: 50%;
     min-height: 100vh;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .landing-top-right {
@@ -22,8 +30,8 @@ button:focus {
     position: relative;
 }
 
-.landing-container-top .landing-child {
-    display: inline-block;
+.landing-container-top {
+    display: flex;
 }
 
 h2 {
@@ -36,8 +44,10 @@ h1 {
 
 .h1-landing {
     font-size: 3rem;
+    width: 100%;
     position: absolute;
-    top: 30%;
+    text-align: center;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -50,6 +60,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    width: 250px;
 }
 
 .registrationForm input,
@@ -62,6 +73,7 @@ h1 {
     border-radius: 5px;
     text-align: center;
     margin: 0 auto;
+    width: 100%;
 }
 
 .modalForm input:not(:last-of-type),
@@ -81,27 +93,31 @@ h1 {
 }
 
 .modalForm textarea,
-.modalForm select {
+.modalForm select,
+.modalForm input:not(:last-of-type) {
     height: 30px;
-    width: 205px;
+    width: 100%;
 }
 
 .modalForm textarea {
-    max-width: 202px;
-    min-width: 202px;
     max-height: 100px;
+    width: 100%;
 }
 
 .registrationForm input:not(:last-of-type),
 .loginForm input:not(:last-of-type),
 .modalForm input:not(:last-of-type) {
     height: 30px;
-    width: 200px;
 }
 
 .registrationForm input:not(:first-of-type),
 .loginForm input:not(:first-of-type) {
     margin-top: 20px;
+}
+
+.registrationForm input:last-of-type,
+.loginForm input:last-of-type {
+    margin-top: 30px;
 }
 
 .css-2b097c-container {
@@ -120,11 +136,12 @@ h1 {
 .comment-form button {
     margin: 0 auto;
     width: 110px;
-    background-color: #c9662e;
+    background-color: #ed761f;
     color: white;
     cursor: pointer;
     font-size: 16px;
     padding: 10px;
+    width: 100%;
 }
 
 .loginRegistration {
@@ -139,8 +156,17 @@ a.loginLink {
 
 .error {
     margin-top: 20px;
-    color: red;
+    color: #f03224;
     text-align: center;
+}
+
+.registerError {
+    margin-top: 20px;
+    background: #f03224;
+    text-align: center;
+    border-radius: 5px;
+    padding: 3px 10px;
+    color: white;
 }
 
 .h1-cooks {
@@ -154,38 +180,57 @@ a.loginLink {
 
 .cook-link {
     position: absolute;
-    top: 70%;
+    top: 140%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    width: 100%;
+    text-align: center;
 }
 
 .landingButton {
     font-size: 1.8rem;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
     color: white;
     cursor: pointer;
-    border: none;
+    background: #51b73b;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(7 116 4 / 60%);
+    box-shadow: 0px 0px 5px 0px rgb(7 116 4/ 60%);
+}
+
+.landingButton:hover {
+    color: white;
+    background: rgb(7, 116, 4);
+}
+
+.underline-color a {
+    text-decoration: none;
 }
 
 .landing-text {
     color: white;
     font-size: 1.2rem;
-    width: 60%;
+    width: 65%;
     padding: 20px;
+    border-radius: 3px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
     margin: 0 auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(81, 183, 59, 0.7);
+    background: linear-gradient(to bottom, rgb(7, 116, 4) 0%, #51b73b);
 }
 
 .my-cooks-container {
     background-image: url("../images/my-cooks-header.jpg");
     background-attachment: fixed;
     background-position: left;
+    background-size: cover;
     width: 100%;
     height: 300px;
     position: relative;
@@ -193,27 +238,33 @@ a.loginLink {
 
 .my-cooks-container-child {
     width: 70%;
-    height: 100vh;
     min-height: 500px;
     margin: 0 auto;
     padding-top: 300px;
     position: relative;
+    margin-bottom: 100px;
 }
 
 .modal {
     position: fixed;
+    z-index: 9999;
     top: 0;
     right: 0;
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     color: white;
-    padding: 10px 10px 10px 15px;
+    padding: 10px 15px 10px 15px;
     border-top-left-radius: 35px;
     border-bottom-left-radius: 35px;
     font-size: 1.2rem;
 }
 
+.modalName-container {
+    text-align: left;
+}
+
 .profile-login-link {
     color: white;
+    text-decoration: none;
     width: 150px;
 }
 
@@ -221,13 +272,18 @@ a.loginLink {
     padding-right: 10px;
 }
 
-.fa-angle-double-left,
-.fa-angle-double-right {
+.fa-chevron-left,
+.fa-chevron-right {
     padding-bottom: 10px;
     padding-top: 10px;
     padding-right: 5px;
     font-size: 20px;
-    color: rgb(0, 17, 255);
+    color: #0a3847;
+}
+
+.fa-user-circle {
+    font-size: 22px;
+    margin-right: 10px;
 }
 
 .showModalButton {
@@ -236,8 +292,7 @@ a.loginLink {
     cursor: pointer;
 }
 
-.label-container span {
-    border-top: 1px solid white;
+.label-container {
     font-size: 16px;
     padding-right: 5px;
 }
@@ -247,28 +302,47 @@ a.loginLink {
 }
 
 .modalForm {
-    overflow-y: scroll;
-    padding-left: 30px;
+    overflow-y: auto;
+    padding-left: 20px;
     height: 680px;
-    padding-bottom: 20px;
-    padding-right: 10px;
+    padding-bottom: 30px;
+    padding-right: 20px;
+}
+
+.modalForm::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modalForm::-webkit-scrollbar-track {
+    background: #0a3847;
 }
 
 .my-cook {
-    display: block;
-    border-top: 1px solid lightgrey;
-    padding: 30px 0 30px 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 4px 10px 0 rgb(149 149 149 / 39%);
+    margin: 10px 0;
+    cursor: pointer;
+    padding: 20px 10px 20px 10px;
     color: rgb(119, 119, 119);
 }
 
 .my-cook:first-of-type {
-    margin-top: 40px;
+    margin-top: 60px;
     border-top: none;
 }
 
+.profilceCuisine-screen {
+    margin-top: 10px;
+}
+
+.profileCuisine-screen {
+    margin-top: 2px;
+}
+
 .profilePic-screen {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     cursor: pointer;
     border: none;
@@ -282,74 +356,119 @@ a.loginLink {
 .profileName-screen {
     display: block;
     font-weight: 800;
-    font-size: 20px;
-    color: #c9662e;
+    font-size: 1.4rem;
+    color: #ed761f;
 }
 
-.inline {
-    display: inline-block;
-    height: 150px;
+.my-cook-element {
+    height: 120px;
 }
 
-.inline:first-of-type {
-    vertical-align: top;
-}
-
-.inline:last-of-type {
+.my-cook-element:last-of-type {
     margin-left: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
-.inline-selects span:not(:first-of-type) {
-    margin-left: 30px;
+.my-cook-element-details span:not(:last-of-type) {
+    margin-right: 30px;
 }
 
-.inline-selects .select {
-    display: inline-block;
+.my-cook-element-details span {
+    white-space: wrap;
+}
+
+.my-cook-element-details {
+    margin-top: auto;
 }
 
 .cancel {
     cursor: pointer;
 }
 
-.my-cook-big {
+.my-cook-modal {
     position: fixed;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     bottom: 0;
     left: 0;
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     width: 100%;
     min-height: 200px;
-    padding: 20px;
+    color: white;
+    z-index: 2;
+    animation-name: my_cook_animation;
+    animation-duration: 0.4s;
+}
+
+@keyframes my_cook_animation {
+    from {
+        bottom: -100%;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+.my-cook-modal-child {
+    margin: 40px;
+}
+
+.my-cook-modal-child:first-of-type {
+    width: 350px;
+}
+
+.modal-details-container span:not(:first-of-type) {
+    margin-top: 14px;
     color: white;
 }
 
-.my-cook-big .select {
+.modal-details-container span {
+    max-width: 350px;
+}
+
+.modal-details-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-details-container i {
+    margin-right: 5px;
+}
+
+.modal-details-heighlight {
+    border-left: 4px solid #ed761f;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+.my-cook-modal .my-cook-element-details-child {
     color: white;
 }
 
-.my-cook-big-text {
+.my-cook-modal-text {
     text-align: left;
 }
 
-.profilePic-screen-big {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    color: transparent;
-}
-
-.profileName-screen-big {
+.profileName-modal {
     color: rgb(255 222 19);
     font-weight: 800;
-    font-size: 26px;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    display: block;
 }
 
-.fa-angle-double-down {
-    color: rgb(0, 17, 255);
+.fa-chevron-down {
+    color: white;
+    background: #0a3847;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 60%);
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 60%);
     font-size: 28px;
     position: absolute;
-    left: 94%;
-    top: 8%;
+    left: 97%;
+    top: 0%;
     cursor: pointer;
 }
 
@@ -361,8 +480,16 @@ input[type="file"] {
     display: none;
 }
 
+input[type="text" i] {
+    padding: 0px;
+}
+
+input[type="password" i] {
+    padding: 0px;
+}
+
 .upload-button {
-    background-color: rgb(0, 17, 255);
+    background-color: #0a3847;
     color: white;
     cursor: pointer;
     font-size: 16px;
@@ -370,17 +497,49 @@ input[type="file"] {
     border: none;
 }
 
+.upload-button:hover {
+    -webkit-box-shadow: 0px 0px 0px 2px white;
+    box-shadow: 0px 0px 0px 2px white;
+}
+
+.upload-button:active {
+    background-color: #082b36;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .select-images {
     background-color: white;
-    color: rgb(0, 17, 255);
+    color: #0a3847;
     cursor: pointer;
     font-size: 16px;
     padding: 10px;
     border: none;
 }
 
+.select-images:hover {
+    -webkit-box-shadow: 0px 0px 0px 2px #0a3847;
+    box-shadow: 0px 0px 0px 2px #0a3847;
+}
+
+.select-images:active {
+    background-color: rgb(230, 230, 230);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 .uploader-modal {
     margin-top: 20px;
+}
+
+.addCook-button {
+    background: #ed761f;
+    color: white;
+    cursor: pointer;
+    font-family: "Oxanium", cursive;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px;
 }
 
 .uploader-modal .upload-buttons {
@@ -404,52 +563,385 @@ input[type="file"] {
     text-align: center;
 }
 
-.image-galery .imageGalery-image {
-    display: inline-block;
+.image-gallery-container .image-gallery-image {
     color: transparent;
-}
-
-.imageGalery-image {
-    width: 100px;
-    height: 100px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
+    border-radius: 5px;
+    margin: 5px;
+    width: 140px;
+    height: 140px;
     object-fit: cover;
-    cursor: pointer;
     border: none;
-    color: transparent;
 }
 
-.inline-image-galery {
+.image-gallery-container {
     vertical-align: top;
+    max-width: 500px;
 }
 
 .comment-form {
-    position: fixed;
-    transform: translate(-50%);
-    height: 137px;
-    width: 300px;
-    background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
-    left: 82%;
-    top: 50%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    width: 400px;
 }
 
 .comment-form textarea {
-    width: 200px;
+    border-radius: 5px;
+    height: 50px;
+    width: 360px;
+    padding: 5px;
+    resize: none;
+    font-size: 14px;
+    line-height: 20px;
 }
 
-.comment-form button {
-    margin: 0 auto;
-    background-color: #c9662e;
-    color: white;
+.comment-form .comment-button {
+    border-radius: 5px;
+    font-family: "Oxanium", cursive;
+    font-weight: 600;
+    width: 370px;
     cursor: pointer;
-    font-size: 14px;
+    border-color: transparent;
+    background-color: #ed761f;
+    color: white;
+    font-size: 16px;
     padding: 10px;
 }
 
+.comment-button-container {
+    margin-top: 20px;
+}
+
 .comment-form .commentSection {
-    overflow-y: scroll;
-    padding: 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+    overflow-y: auto;
     text-align: left;
-    height: 80px;
+    height: 150px;
+    color: white;
+}
+
+.commentDetails {
+    background: white;
+    color: #0a3847;
+    border-radius: 3px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 3px 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.commentText {
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    background: #0a3847;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 60%);
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 60%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    padding: 30px 0;
+}
+
+footer .developer {
+    margin-top: 10px;
+    text-align: center;
+}
+
+footer .footer-logo {
+    font-size: 32px;
+}
+
+.developer span:first-of-type {
+    margin-right: 20px;
+}
+
+.developer span {
+    margin-top: 5px;
+    display: block;
+}
+
+/*Media Queries*/
+
+@media screen and (max-width: 1420px) {
+    .comment-form {
+        width: 300px;
+    }
+
+    .comment-form textarea {
+        width: 290px;
+    }
+
+    .comment-form .comment-button {
+        width: 300px;
+    }
+
+    .fa-chevron-down {
+        left: 95%;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .landing-text {
+        width: 70%;
+        top: 60%;
+    }
+
+    .cook-link {
+        top: 130%;
+    }
+
+    .my-cooks-container-child {
+        width: 85%;
+    }
+
+    .my-cook-element-details span {
+        white-space: nowrap;
+        line-height: 25px;
+    }
+
+    .my-cook-modal-child {
+        width: 30%;
+    }
+
+    .my-cook-modal-child:first-of-type {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .fa-chevron-down {
+        left: 85%;
+    }
+
+    .h1-landing {
+        top: 5%;
+    }
+
+    .landing-text {
+        top: 46%;
+    }
+
+    .cook-link {
+        top: 130%;
+    }
+
+    .my-cook-modal {
+        display: block;
+        height: 600px;
+        overflow-y: auto;
+        padding: 40px 40px;
+    }
+
+    .my-cook-modal .inline {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .my-cook-modal-child {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .my-cook-modal-child:first-of-type {
+        margin-right: 40px;
+    }
+
+    .my-cook-modal-child:not(:last-of-type) {
+        width: 45%;
+    }
+
+    .my-cook-modal-child:nth-of-type(2) {
+        margin-top: 59px;
+    }
+
+    .image-gallery-container {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .landing-text {
+        top: 50%;
+    }
+
+    .cook-link {
+        top: 130%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .fa-chevron-down {
+        left: 90%;
+    }
+
+    .my-cook-modal {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .landing-container-top {
+        display: block;
+    }
+
+    .landing-top-left,
+    .landing-top-right {
+        width: 100%;
+    }
+
+    .my-cook {
+        height: 140px;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .comment-form {
+        max-width: 300px;
+        width: auto;
+    }
+
+    .comment-form .comment-button {
+        width: 100%;
+    }
+
+    .comment-form textarea {
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .landing-top-left {
+        height: 480px;
+    }
+
+    .my-cook-modal {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .my-cook-modal-child:not(:last-of-type) {
+        width: 100%;
+    }
+
+    .my-cook-modal-child:last-of-type {
+        order: 1;
+    }
+
+    .my-cook-modal-child:first-of-type {
+        order: 2;
+    }
+
+    .my-cook-modal-child:nth-of-type(2) {
+        order: 3;
+    }
+
+    .image-gallery-container {
+        margin-bottom: 40px;
+        margin-top: 0px;
+    }
+
+    .image-gallery-container .image-gallery-image {
+        width: 200px;
+        height: 200px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .my-cook {
+        height: 150px;
+    }
+
+    .my-cooks-container-child {
+        width: 100%;
+    }
+
+    .h1-cooks {
+        margin-top: 0;
+        padding: 0px;
+        color: white;
+        background-image: none;
+        position: relative;
+        z-index: 1;
+        top: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+    }
+
+    .h1-link {
+        text-decoration: none;
+    }
+
+    .my-cooks-container {
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+            ),
+            url(../images/my-cooks-header.jpg);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .my-cook {
+        height: 180px;
+        flex-direction: column;
+    }
+
+    .image-gallery-container .image-gallery-image {
+        width: 100%;
+        height: 300px;
+    }
+
+    .profilePic-screen {
+        width: 100%;
+        height: 100%;
+    }
+
+    .my-cook-element {
+        height: 160px;
+    }
+
+    .my-cook {
+        height: 340px;
+    }
+
+    .profileName-screen {
+        margin-top: 10px;
+    }
+
+    .profileCuisine-screen {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .image-gallery-container .image-gallery-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .uploader-modal :first-child {
+        margin-bottom: 10px;
+    }
+
+    .h1-landing {
+        font-size: 2.2rem;
+    }
+
+    .landing-top-left {
+        height: 580px;
+    }
+
+    .cook-link {
+        top: 125%;
+    }
 }

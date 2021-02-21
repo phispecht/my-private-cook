@@ -93,18 +93,24 @@ exports.insertImage = (id, image1, image2, image3, image4, image5) => {
     );
 };
 
-exports.insertComment = (id, comment) => {
+exports.selectCommentProfile = (userId) => {
+    return db.query(`SELECT first, last, email FROM users WHERE id = $1`, [
+        userId,
+    ]);
+};
+
+exports.insertComment = (id, firstName, lastName, email, comment) => {
     return db.query(
-        `INSERT INTO comments (users_id, comment) 
-        VALUES ($1, $2) 
+        `INSERT INTO comments (users_id, comment_first, comment_last, comment_email, comment) 
+        VALUES ($1, $2, $3, $4, $5)
          RETURNING *`,
-        [id, comment]
+        [id, firstName, lastName, email, comment]
     );
 };
 
 exports.getComments = (id) => {
     return db.query(
-        `SELECT comment FROM comments WHERE users_id = $1 ORDER BY created_at DESC`,
+        `SELECT comment_first, comment_last, comment_email, comment, created_at FROM comments WHERE users_id = $1`,
         [id]
     );
 };

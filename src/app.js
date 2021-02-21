@@ -1,16 +1,15 @@
 import React from "react";
-import Cooks from "./my-cooks";
-import ProfileModal from "./profileModal";
+import LandingPage from "./components/landing";
+import Cooks from "./components/my-cooks";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 export default function App() {
     return (
         <div className="app-container">
-            <BrowserRouter>
-                <Route path="/my-cooks" render={() => <Cooks />} />
-                <Route path="/my-cooks" render={() => <ProfileModal />} />
-            </BrowserRouter>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/sign-up" component={LandingPage} />
+            <Route path="/my-cooks" component={Cooks} />
         </div>
     );
 }

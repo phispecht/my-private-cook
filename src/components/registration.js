@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import axios from "./axios";
+import { Link } from "react-router-dom";
+import axios from "../axios";
 
 export default function Registration() {
     const [registration, setRegistration] = useState("");
@@ -34,7 +34,7 @@ export default function Registration() {
                 className="registrationForm"
                 onSubmit={(e) => submitRegistration(e)}
             >
-                <h2 className="registertitle">Register Now:</h2>
+                <h2 className="registertitle">Sign up:</h2>
                 <input
                     required
                     type="text"
@@ -69,7 +69,7 @@ export default function Registration() {
                     value="Submit"
                 />
                 <div className="loginRegistration">
-                    <Link className="loginLink" to="/login">
+                    <Link className="loginLink" to="/">
                         Log in
                     </Link>
                 </div>
