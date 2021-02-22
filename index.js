@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const server = require("http").Server(app);
 const compression = require("compression");
 const db = require("./db");
 const cookieSession = require("cookie-session");
@@ -267,6 +266,6 @@ app.get("*", function (req, res) {
 
 const port = process.env.PORT || 8080;
 
-server.listen(port, function () {
+app.listen(port, function () {
     console.log("I'm listening.");
 });
