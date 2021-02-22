@@ -39,8 +39,7 @@ if (require.main == module) {
         }
     });
 } else {
-    const { createProxyMiddleware } = require("http-proxy-middleware");
-    module.exports = createProxyMiddleware(webpack(conf), {
+    module.exports = require("webpack-dev-middleware")(webpack(conf), {
         watchOptions: {
             aggregateTimeout: 300,
         },
