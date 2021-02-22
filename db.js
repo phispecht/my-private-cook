@@ -5,7 +5,7 @@ if (process.env.DATABASE_URL) {
     db = spicedPg(process.env.DATABASE_URL);
 } else {
     const { user, pw } = require("./secrets.json");
-    db = spicedPg(`postgres:${user}:${pw}@localhost:29540/myprivatecook`);
+    db = spicedPg(`postgres:${user}:${pw}@localhost:5432/myprivatecook`);
 }
 
 exports.insertRegistration = (first, last, email, pw) => {
