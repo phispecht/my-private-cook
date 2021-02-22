@@ -3,4 +3,6 @@ const app = express();
 
 app.use(require("./build.js"));
 
-app.listen(8081, () => console.log(`Ready to compile and serve bundle.js`));
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => console.log(`Ready to compile and serve bundle.js`));
