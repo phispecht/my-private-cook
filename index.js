@@ -11,7 +11,7 @@ const s3 = require("./s3.js");
 const multer = require("multer");
 const uidSafe = require("uid-safe");
 const path = require("path");
-const { json } = require("express");
+/* const { json } = require("express"); */
 
 const diskStorage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -254,7 +254,6 @@ app.get("/getComments/:id", (req, res) => {
         .then((getComments) => {
             res.json(getComments);
         })
-
         .catch(function (error) {
             console.log(error);
         });
