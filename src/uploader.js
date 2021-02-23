@@ -39,8 +39,8 @@ export default function Uploader() {
     return (
         <div className="uploader-modal">
             <span className="uploadImagesText">
-                After submitting you can also upload up to 5 of your
-                food-images:
+                After submitting you can also upload up to 5 of your food
+                images:
             </span>
             <p className="note">(you can select more at once)</p>
             <div className="upload-buttons-container">
