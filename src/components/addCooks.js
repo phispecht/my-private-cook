@@ -34,6 +34,7 @@ export default function addCooks() {
         axios
             .post("/submitCook", submitCook)
             .then(function (cookData) {
+                console.log(cookData);
                 dispatch(addCook(cookData.data.rows));
             })
             .catch(function (error) {
