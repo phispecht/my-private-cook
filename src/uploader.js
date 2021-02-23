@@ -19,7 +19,6 @@ export default function Uploader() {
         axios
             .post("/upload", formData)
             .then((upload) => {
-                console.log(upload);
                 dispatch(addImage(upload.data.rows));
             })
             .catch(function (error) {
