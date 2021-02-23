@@ -160,17 +160,17 @@ export default function addCooks() {
                             placeholder="Hourly wage"
                             onChange={(e) => handleChange(e)}
                         />
+                        <input
+                            className="addCook-button"
+                            type="submit"
+                            value="Submit"
+                        />
                         <BrowserRouter>
                             <Route
                                 path="/my-cooks"
                                 render={() => <Uploader />}
                             />
                         </BrowserRouter>
-                        <input
-                            className="addCook-button"
-                            type="submit"
-                            value="Submit"
-                        />
                     </form>
                 </span>
             )}

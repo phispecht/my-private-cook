@@ -80,8 +80,7 @@ exports.getCookModal = (id) => {
 
 exports.insertImage = (id, image1, image2, image3, image4, image5) => {
     return db.query(
-        `INSERT INTO images (users_id, image1, image2, image3, image4, image5) 
-        VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+        `UPDATE images SET image1 = $2, image2 = $3, image3 = $4, image4 = $5, image5 = $6 WHERE id = $1 RETURNING *`,
         [
             id,
             image1 || null,

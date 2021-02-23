@@ -19,6 +19,7 @@ export default function Uploader() {
         axios
             .post("/upload", formData)
             .then((upload) => {
+                console.log(upload);
                 dispatch(addImage(upload.data.rows));
             })
             .catch(function (error) {
@@ -32,8 +33,11 @@ export default function Uploader() {
 
     return (
         <div className="uploader-modal">
-            Uploade up to 5 of your food-images
-            <br />
+            <span className="uploadImagesText">
+                After submitting you can also upload up to 5 of your
+                food-images:
+            </span>
+            <p className="note">(you can select more at once)</p>
             <div className="upload-buttons-container">
                 <label
                     htmlFor="file-upload"
