@@ -380,6 +380,7 @@ a.loginLink {
     display: -ms-flexbox;
     display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
 }
 
 .my-cook-element-details span:not(:last-of-type) {
@@ -448,6 +449,7 @@ a.loginLink {
     display: -ms-flexbox;
     display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
 }
 
 .modal-details-container i {
@@ -675,6 +677,7 @@ footer {
     display: -webkit-flex;
     align-items: center;
     flex-direction: column;
+    -webkit-flex-direction: column;
     color: white;
     padding: 30px 0;
 }
@@ -857,6 +860,7 @@ footer .footer-logo {
         display: -ms-flexbox;
         display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
     }
 
     .my-cook-modal-child:not(:last-of-type) {
@@ -924,9 +928,14 @@ footer .footer-logo {
 }
 
 @media screen and (max-width: 540px) {
+    .my-cook-element:last-of-type {
+        margin-left: 10px;
+    }
+
     .my-cook {
         height: 180px;
         flex-direction: column;
+        -webkit-flex-direction: column;
     }
 
     .image-gallery-container .image-gallery-image {
