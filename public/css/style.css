@@ -256,6 +256,8 @@ a.loginLink {
     z-index: 9900;
     top: 0;
     right: 0;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(7 116 4 / 60%);
+    box-shadow: 0px 0px 5px 0px rgb(7 116 4 / 60%);
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     color: white;
     padding: 10px 15px 10px 15px;
@@ -409,6 +411,8 @@ a.loginLink {
     justify-content: center;
     bottom: 0;
     left: 0;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(7 116 4 / 60%);
+    box-shadow: 0px 0px 5px 0px rgb(7 116 4 / 60%);
     background-image: linear-gradient(to top, rgb(7, 116, 4) 0%, #51b73b);
     width: 100%;
     min-height: 200px;
@@ -873,6 +877,7 @@ footer .footer-logo {
         overflow-x: hidden;
         top: 50%;
         left: 50%;
+        height: 420px;
         transform: translate(-50%, -50%);
         padding: 15px 15px;
     }
