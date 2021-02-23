@@ -196,30 +196,43 @@ app.post("/upload", uploader.array("file", 5), s3.upload, (req, res) => {
     let filepaths = [];
     const id = req.session.userId;
 
-    for (let i = 0; i < req.files.length; i++) {
-        let { filename } = req.files[i];
-        let imageUrl = `${s3Url}${filename}`;
+    db.checkExistingProfile(id)
+        .then((profile) => {
+            if (profile.rows.length > 0) {
+                for (let i = 0; i < req.files.length; i++) {
+                    let { filename } = req.files[i];
+                    let imageUrl = `${s3Url}${filename}`;
 
-        filepaths.push(imageUrl);
-    }
-
-    if (req.files.length != 0) {
-        db.insertImage(id, ...filepaths)
-            .then(() => {
-                db.selectCooks().then(function (cookData) {
-                    res.json(cookData);
-                });
-            })
-            .catch(function () {
+                    filepaths.push(imageUrl);
+                }
+                if (req.files.length != 0) {
+                    db.insertImage(id, ...filepaths)
+                        .then(() => {
+                            db.selectCooks().then(function (cookData) {
+                                res.json(cookData);
+                            });
+                        })
+                        .catch(function () {
+                            res.json({
+                                success: false,
+                            });
+                        });
+                } else {
+                    res.json({
+                        success: false,
+                    });
+                }
+            } else {
                 res.json({
                     success: false,
                 });
+            }
+        })
+        .catch(function () {
+            res.json({
+                success: false,
             });
-    } else {
-        res.json({
-            success: false,
         });
-    }
 });
 
 app.post("/sendComment", (req, res) => {

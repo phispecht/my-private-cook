@@ -5,6 +5,7 @@ import { addImage } from "./redux/actions";
 
 export default function Uploader() {
     const [files, setFiles] = useState([]);
+    const [error, setError] = useState("");
     const dispatch = useDispatch();
 
     const upload = (e) => {
@@ -19,7 +20,12 @@ export default function Uploader() {
         axios
             .post("/upload", formData)
             .then((upload) => {
-                dispatch(addImage(upload.data.rows));
+                if (upload.data.success == false) {
+                    setError("Please create a profile first");
+                } else {
+                    setError("");
+                    dispatch(addImage(upload.data.rows));
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -58,6 +64,9 @@ export default function Uploader() {
                 >
                     2. Press me to Upload
                 </button>
+                {error != "" && (
+                    <span className="errorSubmitImage">{error}</span>
+                )}
             </div>
         </div>
     );

@@ -120,3 +120,7 @@ exports.getComments = (id) => {
 exports.getLogedInName = (userId) => {
     return db.query(`SELECT * FROM users WHERE id = $1`, [userId]);
 };
+
+exports.checkExistingProfile = (userId) => {
+    return db.query(`SELECT * FROM cooks WHERE cooks_id = $1`, [userId]);
+};

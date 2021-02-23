@@ -170,6 +170,13 @@ a.loginLink {
     text-align: center;
 }
 
+.errorSubmitImage {
+    margin-top: 20px;
+    background: #f03224;
+    color: white;
+    text-align: center;
+}
+
 .registerError {
     margin-top: 20px;
     background: #f03224;
