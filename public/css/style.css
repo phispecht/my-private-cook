@@ -328,7 +328,6 @@ a.loginLink {
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    width: 100%;
     align-items: center;
     box-shadow: 1px 4px 10px 0 rgb(149 149 149 / 39%);
     margin: 10px 0;
@@ -465,6 +464,7 @@ a.loginLink {
 
 .my-cook-modal .my-cook-element-details-child {
     color: white;
+    white-space: wrap;
 }
 
 .my-cook-modal-text {
