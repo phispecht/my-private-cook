@@ -130,6 +130,7 @@ export default function profileModal(modal) {
                         <div className="image-gallery-container">
                             {/* ////////// IMAGES ///////////// */}
                             <div className="image-gallery-child">
+                                {" "}
                                 <img
                                     src={
                                         cookModal.data.rows[0].image1
@@ -137,7 +138,7 @@ export default function profileModal(modal) {
                                             : "/images/default.jpg"
                                     }
                                     onError={(e) => defaultImg(e)}
-                                    className="image-gallery-image"
+                                    className="image-gallery-image onscreen"
                                 />
                                 <img
                                     src={
