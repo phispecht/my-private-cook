@@ -98,19 +98,24 @@ h1 {
 .modalForm textarea,
 .modalForm select,
 .modalForm input:not(:last-of-type) {
-    height: 30px;
+    height: 38px;
+    background: white;
     width: 100%;
 }
 
 .modalForm textarea {
+    font-family: "Oxanium", cursive;
     max-height: 100px;
     width: 100%;
+    font-size: 16px;
 }
 
 .registrationForm input:not(:last-of-type),
 .loginForm input:not(:last-of-type),
 .modalForm input:not(:last-of-type) {
-    height: 30px;
+    font-family: "Oxanium", cursive;
+    height: 38px;
+    font-size: 16px;
 }
 
 .registrationForm input:not(:first-of-type),
@@ -618,7 +623,7 @@ input[type="password" i] {
     width: 360px;
     padding: 5px;
     resize: none;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
 }
 
@@ -897,6 +902,10 @@ footer .footer-logo {
 
     .my-cook-modal-child:nth-of-type(2) {
         order: 3;
+    }
+
+    .modalForm {
+        height: 530px;
     }
 
     .image-gallery-container {
