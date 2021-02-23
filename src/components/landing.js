@@ -18,7 +18,9 @@ export default function Landing() {
                     <span className="underline-color">
                         <BrowserRouter forceRefresh={true}>
                             <Link to="/my-cooks" className="cook-link">
-                                <span className="landingButton">Start Now</span>
+                                <button className="landingButton">
+                                    Start Now
+                                </button>
                             </Link>
                         </BrowserRouter>
                     </span>

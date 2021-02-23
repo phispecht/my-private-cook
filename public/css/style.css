@@ -118,6 +118,7 @@ h1 {
 .registrationForm input:last-of-type,
 .loginForm input:last-of-type {
     margin-top: 30px;
+    -webkit-appearance: none;
 }
 
 .css-2b097c-container {
@@ -194,6 +195,7 @@ a.loginLink {
     border-radius: 3px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
+    border-style: none;
     color: white;
     cursor: pointer;
     background: #51b73b;
@@ -299,6 +301,7 @@ a.loginLink {
 
 .modalForm input:last-of-type {
     margin-top: 30px;
+    -webkit-appearance: none;
 }
 
 .modalForm {
@@ -367,6 +370,7 @@ a.loginLink {
 .my-cook-element:last-of-type {
     margin-left: 30px;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
 }
 
@@ -613,6 +617,7 @@ input[type="password" i] {
     color: white;
     font-size: 16px;
     padding: 10px;
+    -webkit-appearance: none;
 }
 
 .comment-button-container {
