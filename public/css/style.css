@@ -207,14 +207,9 @@ a.loginLink {
     border-style: none;
     color: white;
     cursor: pointer;
-    background: #51b73b;
+    background: rgb(7, 116, 4);
     -webkit-box-shadow: 0px 0px 5px 0px rgb(7 116 4 / 60%);
     box-shadow: 0px 0px 5px 0px rgb(7 116 4/ 60%);
-}
-
-.landingButton:hover {
-    color: white;
-    background: rgb(7, 116, 4);
 }
 
 .underline-color a {
@@ -914,7 +909,7 @@ footer .footer-logo {
     }
 
     .modalForm {
-        height: 400px;
+        height: 420px;
     }
 
     .image-gallery-container {
